@@ -14,12 +14,13 @@ export default function CabecalhoHeader({ navigation }) {
       <View style={styles.buttonsContainer}>
         <TouchableOpacity 
           style={styles.button}
-          onPress={() => navigation.navigate('Telaansiedade')} // Modificação aqui
+          onPress={() => navigation.navigate('Telaansiedade')} 
         >
           <Text style={styles.buttonText}>Início</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Perfil</Text>
+        <TouchableOpacity style={styles.button}
+        onPress={() => navigation.navigate('Telachat')}>
+          <Text style={styles.buttonText}>Chat</Text>
         </TouchableOpacity>
       </View>
 

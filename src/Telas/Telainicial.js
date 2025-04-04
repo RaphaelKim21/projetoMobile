@@ -53,8 +53,6 @@ const estilos = StyleSheet.create({
   },
   gradienteCabecalho: {
     width: '100%',
-    paddingTop: 40,
-    paddingBottom: 12,
   },
   conteudo: {
     flex: 1,
