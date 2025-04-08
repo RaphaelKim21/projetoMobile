@@ -1,20 +1,146 @@
+import { Ionicons } from '@expo/vector-icons';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-import Telainicial from "./src/Telas/Telainicial";
+import CabecalhoHeader from './src/Components/CabecalhoHeader';
 import Telaansiedade from "./src/Telas/Telaansiedade";
 import Telachat from "./src/Telas/Telachat";
+import Telainicial from "./src/Telas/Telainicial";
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+// Conteúdo personalizado do Drawer
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props} style={styles.drawerContainer}>
+      <View style={styles.drawerHeader}>
+        <Ionicons name="person-circle" size={80} color="#659696" />
+        <Text style={styles.drawerTitle}>Central de Ajuda</Text>
+      </View>
+
+      <DrawerItem
+        label="Início"
+        icon={({ color }) => (
+          <Ionicons name="home" size={24} color={color} style={{ marginRight: 10 }} />
+        )}
+        onPress={() => props.navigation.navigate('Main', { screen: 'Telainicial' })}
+        labelStyle={styles.drawerLabel}
+        style={styles.drawerItem}
+      />
+
+      <DrawerItem
+        label="Sinais de Ansiedade"
+        icon={({ color }) => (
+          <Ionicons name="alert-circle" size={24} color={color} style={{ marginRight: 10 }} />
+        )}
+        onPress={() => props.navigation.navigate('Main', { screen: 'Telaansiedade' })}
+        labelStyle={styles.drawerLabel}
+        style={styles.drawerItem}
+      />
+
+      <DrawerItem
+        label="Chat de Apoio"
+        icon={({ color }) => (
+          <Ionicons name="chatbubbles" size={24} color={color} style={{ marginRight: 10 }} />
+        )}
+        onPress={() => props.navigation.navigate('Main', { screen: 'Telachat' })}
+        labelStyle={styles.drawerLabel}
+        style={styles.drawerItem}
+      />
+
+      <View style={styles.divider} />
+
+      <DrawerItem
+        label="Configurações"
+        icon={({ color }) => (
+          <Ionicons name="settings" size={24} color={color} style={{ marginRight: 10 }} />
+        )}
+        onPress={() => console.log("Configurações")}
+        labelStyle={styles.drawerLabel}
+        style={styles.drawerItem}
+      />
+    </DrawerContentScrollView>
+  );
+}
+
+// Navegação Stack principal
+function MainStack() {
+  return (
+    <Stack.Navigator screenOptions={{
+      header: (props) => <CabecalhoHeader {...props} />,
+      headerShown: true
+    }}>
+      <Stack.Screen name="Telainicial" component={Telainicial} />
+      <Stack.Screen name="Telaansiedade" component={Telaansiedade} />
+      <Stack.Screen name="Telachat" component={Telachat} />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator >
-        <Stack.Screen name="Telainicial" component={Telainicial} options={{headerShown:false}}/>
-        <Stack.Screen name="Telaansiedade" component={Telaansiedade} options={{headerShown:false}}/>
-        <Stack.Screen name="Telachat" component={Telachat} options={{headerShown:false}}/>
-      </Stack.Navigator>
+      <Drawer.Navigator
+        drawerContent={(props) => <CustomDrawerContent {...props} />}
+        screenOptions={{
+          drawerActiveBackgroundColor: '#e8f4f4',
+          drawerActiveTintColor: '#659696',
+          drawerInactiveTintColor: '#555',
+          drawerStyle: {
+            backgroundColor: '#f8fbfb',
+            width: 280,
+          },
+          headerShown: false,
+        }}
+      >
+        <Drawer.Screen
+          name="Main"
+          component={MainStack}
+          options={{
+            title: 'Menu Principal',
+            drawerIcon: ({ color }) => (
+              <Ionicons name="apps" size={24} color={color} />
+            ),
+          }}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  drawerContainer: {
+    backgroundColor: '#f8fbfb',
+  },
+  drawerHeader: {
+    padding: 20,
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0ecec',
+  },
+  drawerTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#659696',
+    marginTop: 10,
+  },
+  drawerLabel: {
+    fontSize: 16,
+    fontWeight: '500',
+    marginLeft: -16,
+  },
+  drawerItem: {
+    marginVertical: 4,
+    borderRadius: 8
+  },
+  divider: {
+    height: 1,
+    backgroundColor: '#e0ecec',
+    marginVertical: 15,
+    marginHorizontal: 15,
+  },
+});

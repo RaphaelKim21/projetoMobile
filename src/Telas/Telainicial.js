@@ -1,7 +1,6 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import CabecalhoHeader from '../Components/CabecalhoHeader';
+import React from 'react';
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Telainicial({ navigation }) {
   return (
@@ -10,16 +9,16 @@ export default function Telainicial({ navigation }) {
         colors={['#659696', '#8fb3b3']}
         style={estilos.gradienteCabecalho}
       >
-        <CabecalhoHeader navigation={navigation} />
+
       </LinearGradient>
 
       <View style={estilos.conteudo}>
         <Text style={estilos.tituloPrincipal}>Central de Ajuda Psicológica</Text>
-        
+
         <View style={estilos.cartao}>
           <Text style={estilos.descricao}>
-            Conectamos você a psicólogos especializados de forma 
-            acessível e sigilosa. Oferecemos suporte emocional 
+            Conectamos você a psicólogos especializados de forma
+            acessível e sigilosa. Oferecemos suporte emocional
             personalizado, com sessões online ou presenciais.
           </Text>
         </View>
@@ -35,7 +34,7 @@ export default function Telainicial({ navigation }) {
           </View>
         </View>
 
-        <TouchableOpacity 
+        <TouchableOpacity
           style={estilos.botaoPrincipal}
           onPress={() => navigation.navigate('Detalhes')}
         >

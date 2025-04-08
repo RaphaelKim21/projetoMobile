@@ -1,7 +1,6 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TextInput, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import CabecalhoHeader from '../Components/CabecalhoHeader';
+import React from 'react';
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function Telachat({ navigation }) {
   return (
@@ -11,7 +10,6 @@ export default function Telachat({ navigation }) {
         colors={['#659696', '#8fb3b3']}
         style={estilos.gradienteCabecalho}
       >
-        <CabecalhoHeader navigation={navigation} />
         <Text style={estilos.tituloChat}>Chat de Apoio Anônimo</Text>
       </LinearGradient>
 
@@ -19,7 +17,7 @@ export default function Telachat({ navigation }) {
       <ScrollView style={estilos.areaMensagens}>
         {/* Mensagem do Usuário Anônimo 1 */}
         <View style={[estilos.mensagemContainer, estilos.mensagemUsuario]}>
-        <Image style={estilos.avatarPlaceholder}  source={require('../../assets/anonimo.jpg')}/>
+          <Image style={estilos.avatarPlaceholder} source={require('../../assets/anonimo.jpg')} />
           <View style={[estilos.balaoMensagem, estilos.balaoUsuario]}>
             <Text style={estilos.nomeUsuario}>Anônimo</Text>
             <Text style={estilos.textoMensagem}>
@@ -43,7 +41,7 @@ export default function Telachat({ navigation }) {
 
         {/* Mensagem do Usuário Anônimo 2 */}
         <View style={[estilos.mensagemContainer, estilos.mensagemUsuario]}>
-          <Image style={estilos.avatarPlaceholder}  source={require('../../assets/anonimo.jpg')}/>
+          <Image style={estilos.avatarPlaceholder} source={require('../../assets/anonimo.jpg')} />
           <View style={[estilos.balaoMensagem, estilos.balaoUsuario]}>
             <Text style={estilos.nomeUsuario}>Anônimo</Text>
             <Text style={estilos.textoMensagem}>
@@ -66,7 +64,7 @@ export default function Telachat({ navigation }) {
         </View>
       </ScrollView>
 
-      
+
 
       <View style={estilos.footer}>
         <TextInput
@@ -79,7 +77,7 @@ export default function Telachat({ navigation }) {
         </TouchableOpacity>
       </View>
     </View>
-    
+
   );
 }
 

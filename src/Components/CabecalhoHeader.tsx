@@ -1,34 +1,40 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CabecalhoHeader({ navigation }) {
   return (
-    <View style={styles.header}>
+    <SafeAreaView style={styles.header}>
       {/* Botão Voltar */}
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Ionicons name="chevron-back" size={20} color="white" />
       </TouchableOpacity>
 
       {/* Botões Centrais */}
-      <View style={styles.buttonsContainer}>
-        <TouchableOpacity 
+      <SafeAreaView style={styles.buttonsContainer}>
+        <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Telaansiedade')} 
+          onPress={() => navigation.navigate('Telaansiedade')}
         >
           <Text style={styles.buttonText}>Início</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}
-        onPress={() => navigation.navigate('Telachat')}>
+          onPress={() => navigation.navigate('Telachat')}>
           <Text style={styles.buttonText}>Chat</Text>
         </TouchableOpacity>
-      </View>
+
+        <TouchableOpacity style={styles.button}
+          onPress={() => navigation.openDrawer()}>
+          <Text style={styles.buttonText}>aaa</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
 
       {/* Logo */}
       <View style={styles.logoContainer}>
         <Text style={styles.logoPlaceholder}>LOGO</Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

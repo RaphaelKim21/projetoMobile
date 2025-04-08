@@ -1,27 +1,26 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import CabecalhoHeader from '../Components/CabecalhoHeader';
+import React from 'react';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Telaansiedade({ navigation }) {
   return (
     <View style={estilos.container}>
-      
+
       <LinearGradient
         colors={['#659696', '#8fb3b3']}
         style={estilos.gradienteCabecalho}
       >
-        <CabecalhoHeader navigation={navigation} />
+
       </LinearGradient>
 
       <ScrollView contentContainerStyle={estilos.containerRolagem}>
-        
+
         <View style={estilos.containerTitulo}>
           <Text style={estilos.tituloPrincipal}>Sinais de Ansiedade</Text>
           <Text style={estilos.subtitulo}>Reconhecer para cuidar melhor</Text>
         </View>
 
-        
+
         <View style={estilos.containerConteudo}>
           <Text style={estilos.textoIntroducao}>
             A ansiedade é uma resposta natural do corpo diante de situações desafiadoras, mas quando se torna frequente ou intensa, pode ser um sinal de que algo não está bem.
@@ -46,13 +45,13 @@ export default function Telaansiedade({ navigation }) {
             </Text>
           </View>
 
-          
+
           <View style={estilos.boxAjuda}>
             <Text style={estilos.tituloAjuda}>Quando Buscar Ajuda?</Text>
             <Text style={estilos.textoAjuda}>
               Se esses sintomas persistem por mais de seis meses, atrapalham sua rotina ou causam sofrimento significativo, é importante buscar ajuda profissional.
             </Text>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={estilos.botaoAjuda}
               onPress={() => navigation.navigate('Agendamento')}
             >
