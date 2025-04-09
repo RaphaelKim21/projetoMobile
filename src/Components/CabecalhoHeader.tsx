@@ -16,12 +16,12 @@ export default function CabecalhoHeader({ navigation }) {
       <SafeAreaView style={styles.buttonsContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Telaansiedade')}
+          onPress={() => navigation.navigate('TelaAnsiedade')}
         >
           <Text style={styles.buttonText}>Início</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}
-          onPress={() => navigation.navigate('Telachat')}>
+          onPress={() => navigation.navigate('TelaChat')}>
           <Text style={styles.buttonText}>Chat</Text>
         </TouchableOpacity>
 
