@@ -2,7 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function Telaansiedade({ navigation }) {
+export default function TelaAnsiedade({ navigation }) {
   return (
     <View style={estilos.container}>
 

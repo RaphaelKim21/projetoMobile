@@ -2,7 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-export default function Telachat({ navigation }) {
+export default function TelaChat({ navigation }) {
   return (
     <View style={estilos.container}>
       {/* Cabeçalho */}

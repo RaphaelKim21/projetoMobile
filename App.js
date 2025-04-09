@@ -6,9 +6,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import CabecalhoHeader from './src/Components/CabecalhoHeader';
-import Telaansiedade from "./src/Telas/Telaansiedade";
-import Telachat from "./src/Telas/Telachat";
-import Telainicial from "./src/Telas/Telainicial";
+import TelaAnsiedade from "./src/Telas/TelaAnsiedade";
+import TelaChat from "./src/Telas/TelaChat";
+import TelaInicial from "./src/Telas/TelaInicial";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -27,7 +27,7 @@ function CustomDrawerContent(props) {
         icon={({ color }) => (
           <Ionicons name="home" size={24} color={color} style={{ marginRight: 10 }} />
         )}
-        onPress={() => props.navigation.navigate('Main', { screen: 'Telainicial' })}
+        onPress={() => props.navigation.navigate('Main', { screen: 'TelaInicial' })}
         labelStyle={styles.drawerLabel}
         style={styles.drawerItem}
       />
@@ -37,7 +37,7 @@ function CustomDrawerContent(props) {
         icon={({ color }) => (
           <Ionicons name="alert-circle" size={24} color={color} style={{ marginRight: 10 }} />
         )}
-        onPress={() => props.navigation.navigate('Main', { screen: 'Telaansiedade' })}
+        onPress={() => props.navigation.navigate('Main', { screen: 'TelaAnsiedade' })}
         labelStyle={styles.drawerLabel}
         style={styles.drawerItem}
       />
@@ -47,7 +47,7 @@ function CustomDrawerContent(props) {
         icon={({ color }) => (
           <Ionicons name="chatbubbles" size={24} color={color} style={{ marginRight: 10 }} />
         )}
-        onPress={() => props.navigation.navigate('Main', { screen: 'Telachat' })}
+        onPress={() => props.navigation.navigate('Main', { screen: 'TelaChat' })}
         labelStyle={styles.drawerLabel}
         style={styles.drawerItem}
       />
@@ -74,9 +74,9 @@ function MainStack() {
       header: (props) => <CabecalhoHeader {...props} />,
       headerShown: true
     }}>
-      <Stack.Screen name="Telainicial" component={Telainicial} />
-      <Stack.Screen name="Telaansiedade" component={Telaansiedade} />
-      <Stack.Screen name="Telachat" component={Telachat} />
+      <Stack.Screen name="TelaInicial" component={TelaInicial} />
+      <Stack.Screen name="TelaAnsiedade" component={TelaAnsiedade} />
+      <Stack.Screen name="TelaChat" component={TelaChat} />
     </Stack.Navigator>
   );
 }

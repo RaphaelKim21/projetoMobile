@@ -2,7 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function Telainicial({ navigation }) {
+export default function TelaInicial({ navigation }) {
   return (
     <SafeAreaView style={estilos.container}>
       <LinearGradient
