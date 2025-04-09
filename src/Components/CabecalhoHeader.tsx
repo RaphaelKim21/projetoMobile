@@ -18,7 +18,7 @@ export default function CabecalhoHeader({ navigation }) {
           style={styles.button}
           onPress={() => navigation.navigate('TelaAnsiedade')}
         >
-          <Text style={styles.buttonText}>Início</Text>
+          <Text style={styles.buttonText}>Ansiedade</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}
           onPress={() => navigation.navigate('TelaChat')}>
