@@ -6,10 +6,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function CabecalhoHeader({ navigation }) {
   return (
     <SafeAreaView style={styles.header}>
-      {/* Botão Voltar */}
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Ionicons name="chevron-back" size={20} color="white" />
-      </TouchableOpacity>
+      {/* Botão Menu */}
+      <TouchableOpacity style={styles.button}
+          onPress={() => navigation.openDrawer()}>
+            <Ionicons name="menu-outline" style={{color:'white'}} size={27}></Ionicons>
+        </TouchableOpacity>
 
       {/* Botões Centrais */}
       <SafeAreaView style={styles.buttonsContainer}>
@@ -24,11 +25,9 @@ export default function CabecalhoHeader({ navigation }) {
           <Text style={styles.buttonText}>Chat</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}
-          onPress={() => navigation.openDrawer()}>
-          <Text style={styles.buttonText}>aaa</Text>
-        </TouchableOpacity>
       </SafeAreaView>
+
+      
 
       {/* Logo */}
       <View style={styles.logoContainer}>
