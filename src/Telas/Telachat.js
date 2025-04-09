@@ -17,7 +17,7 @@ export default function TelaChat({ navigation }) {
       <ScrollView style={estilos.areaMensagens}>
         {/* Mensagem do Usuário Anônimo 1 */}
         <View style={[estilos.mensagemContainer, estilos.mensagemUsuario]}>
-          <Image style={estilos.avatarPlaceholder} source={require('../../assets/anonimo.jpg')} />
+          <Image style={estilos.avatarPlaceholder} source={require('../../assets/usuario.png')} />
           <View style={[estilos.balaoMensagem, estilos.balaoUsuario]}>
             <Text style={estilos.nomeUsuario}>Anônimo</Text>
             <Text style={estilos.textoMensagem}>
@@ -41,7 +41,7 @@ export default function TelaChat({ navigation }) {
 
         {/* Mensagem do Usuário Anônimo 2 */}
         <View style={[estilos.mensagemContainer, estilos.mensagemUsuario]}>
-          <Image style={estilos.avatarPlaceholder} source={require('../../assets/anonimo.jpg')} />
+          <Image style={estilos.avatarPlaceholder} source={require('../../assets/usuario.png')} />
           <View style={[estilos.balaoMensagem, estilos.balaoUsuario]}>
             <Text style={estilos.nomeUsuario}>Anônimo</Text>
             <Text style={estilos.textoMensagem}>
