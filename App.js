@@ -9,11 +9,12 @@ import CabecalhoHeader from './src/Components/CabecalhoHeader';
 import TelaAnsiedade from "./src/Telas/TelaAnsiedade";
 import TelaChat from "./src/Telas/TelaChat";
 import TelaInicial from "./src/Telas/TelaInicial";
+import TelaDicas from "./src/Telas/TelaDicas";
+import TelaEquipe from "./src/Telas/TelaEquipe";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-// Conteúdo personalizado do Drawer
 function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props} style={styles.drawerContainer}>
@@ -43,11 +44,31 @@ function CustomDrawerContent(props) {
       />
 
       <DrawerItem
+        label="Dicas de Saúde Mental"
+        icon={({ color }) => (
+          <Ionicons name="bulb" size={24} color={color} style={{ marginRight: 10 }} />
+        )}
+        onPress={() => props.navigation.navigate('Main', { screen: 'TelaDicas' })}
+        labelStyle={styles.drawerLabel}
+        style={styles.drawerItem}
+      />
+
+      <DrawerItem
         label="Chat de Apoio"
         icon={({ color }) => (
           <Ionicons name="chatbubbles" size={24} color={color} style={{ marginRight: 10 }} />
         )}
         onPress={() => props.navigation.navigate('Main', { screen: 'TelaChat' })}
+        labelStyle={styles.drawerLabel}
+        style={styles.drawerItem}
+      />
+
+      <DrawerItem
+        label="Nossa Equipe"
+        icon={({ color }) => (
+          <Ionicons name="people" size={24} color={color} style={{ marginRight: 10 }} />
+        )}
+        onPress={() => props.navigation.navigate('Main', { screen: 'TelaEquipe' })}
         labelStyle={styles.drawerLabel}
         style={styles.drawerItem}
       />
@@ -76,7 +97,9 @@ function MainStack() {
     }}>
       <Stack.Screen name="TelaInicial" component={TelaInicial} />
       <Stack.Screen name="TelaAnsiedade" component={TelaAnsiedade} />
+      <Stack.Screen name="TelaDicas" component={TelaDicas} />
       <Stack.Screen name="TelaChat" component={TelaChat} />
+      <Stack.Screen name="TelaEquipe" component={TelaEquipe} />
     </Stack.Navigator>
   );
 }
