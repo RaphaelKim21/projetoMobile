@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CabecalhoHeader({ navigation }) {
@@ -31,7 +31,7 @@ export default function CabecalhoHeader({ navigation }) {
 
       {/* Logo */}
       <View style={styles.logoContainer}>
-        <Text style={styles.logoPlaceholder}>LOGO</Text>
+        <Image style={styles.logoPlaceholder} source={require('../../assets/Logo.jpg')}/>
       </View>
     </SafeAreaView>
   );
@@ -67,8 +67,7 @@ const styles = StyleSheet.create({
     marginLeft: 'auto', // Empurra para a direita
   },
   logoPlaceholder: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 18,
+    width:100, 
+    height:50
   },
 });
