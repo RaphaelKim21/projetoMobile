@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView,TextInput, Touchable} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function TelaDicas() {
@@ -121,8 +121,29 @@ export default function TelaDicas() {
 
       <View style={styles.divider} />
 
-      
+      <Text style={{textAlign:'center', fontSize:16}}>Não deixe de nos contactar em caso de qualquer dúvida!</Text>
 
+      <View style={styles.divider} />
+
+      
+        <TextInput
+        style={styles.input}
+        placeholder='Nome: '
+        autoCapitalize='words'
+        />
+      
+    
+     <TextInput
+      style={styles.input}
+      placeholder='Email: '
+      keyboardType='email-address'
+      maxLength={25}
+      />
+    
+
+
+    <View style={styles.divider} />
+      
     </ScrollView>
   );
 }
@@ -198,7 +219,22 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 8,
     backgroundColor: '#F8F2F2'
-  }
-  
-
+  },
+  input: {
+    backgroundColor: '#B2CBCB',
+    width: 300,
+    borderRadius: 15, // Aumentei para combinar com os blocos
+    padding: 15, // Aumentei o padding
+    borderWidth: 3, // Aumentei a borda
+    borderColor: '#B2CBCB',
+    fontSize: 18,
+    marginBottom: 20,
+    alignSelf: 'center',
+    // Sombra
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.50,
+    shadowRadius: 8,
+    elevation: 8
+  },
 });
