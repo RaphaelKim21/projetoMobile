@@ -6,11 +6,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import CabecalhoHeader from './src/Components/CabecalhoHeader';
-import TelaAnsiedade from "./src/Telas/TelaAnsiedade";
-import TelaChat from "./src/Telas/TelaChat";
-import TelaInicial from "./src/Telas/TelaInicial";
+import TelaAnsiedade from './src/Telas/Telaansiedade';
+import TelaChat from './src/Telas/Telachat';
+import TelaInicial from './src/Telas/Telainicial';
 import TelaDicas from "./src/Telas/TelaDicas";
 import TelaEquipe from "./src/Telas/TelaEquipe";
+import TelaTeste from './src/Telas/TelaTeste';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -73,6 +74,20 @@ function CustomDrawerContent(props) {
         style={styles.drawerItem}
       />
 
+
+      <DrawerItem
+        label="Teste Mindly"
+        icon={({ color }) => (
+          <Ionicons name="heart-half-outline" size={24} color={color} style={{ marginRight: 10 }} />
+        )}
+        onPress={() => props.navigation.navigate('Main', { screen: 'TelaTeste' })}
+        labelStyle={styles.drawerLabel}
+        style={styles.drawerItem}
+      />
+
+
+
+
       <View style={styles.divider} />
 
       <DrawerItem
@@ -100,6 +115,7 @@ function MainStack() {
       <Stack.Screen name="TelaDicas" component={TelaDicas} />
       <Stack.Screen name="TelaChat" component={TelaChat} />
       <Stack.Screen name="TelaEquipe" component={TelaEquipe} />
+      <Stack.Screen name='TelaTeste' component={TelaTeste}/>
     </Stack.Navigator>
   );
 }
