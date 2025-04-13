@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import CabecalhoHeader from './src/Components/CabecalhoHeader';
@@ -12,9 +12,13 @@ import TelaInicial from './src/Telas/TelaInicial';
 import TelaDicas from "./src/Telas/TelaDicas";
 import TelaEquipe from "./src/Telas/TelaEquipe";
 import TelaTeste from './src/Telas/TelaTeste';
+import { useFonts } from 'expo-font';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
+
+
+
 
 function CustomDrawerContent(props) {
   return (
