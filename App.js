@@ -6,9 +6,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import CabecalhoHeader from './src/Components/CabecalhoHeader';
-import TelaAnsiedade from './src/Telas/Telaansiedade';
-import TelaChat from './src/Telas/Telachat';
-import TelaInicial from './src/Telas/Telainicial';
+import { TelaAnsiedade } from './src/Telas/TelaAnsiedade';
+import TelaChat from './src/Telas/TelaChat';
+import TelaInicial from './src/Telas/TelaInicial';
 import TelaDicas from "./src/Telas/TelaDicas";
 import TelaEquipe from "./src/Telas/TelaEquipe";
 import TelaTeste from './src/Telas/TelaTeste';

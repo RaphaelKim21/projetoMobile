@@ -2,7 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function TelaAnsiedade({ navigation }) {
+export function TelaAnsiedade({ navigation }) {
   return (
     <View style={estilos.container}>
 
@@ -53,7 +53,6 @@ export default function TelaAnsiedade({ navigation }) {
             </Text>
             <TouchableOpacity
               style={estilos.botaoAjuda}
-              onPress={() => navigation.navigate('Agendamento')}
             >
               <Text style={estilos.textoBotaoAjuda}>Agendar Consulta</Text>
             </TouchableOpacity>
