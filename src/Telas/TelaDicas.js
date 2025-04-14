@@ -1,160 +1,230 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView,TextInput, TouchableOpacity, Alert} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function TelaDicas() {
-    const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
-    const [mensagem, setMensagem] = useState('');
-  
-    const handleEnviar = () => {
-      if (nome.trim() === '' || email.trim() === '' || mensagem.trim() === '') {
-        Alert.alert(
-          "Atenção",
-          "Por favor, preencha todos os campos antes de enviar.",
-          [
-            { text: "OK" }
-          ]
-        );
-      } else {
-        Alert.alert(
-          "✅ Mensagem Enviada!",
-          "Sua mensagem foi enviada com sucesso!\n\nEntraremos em contato em breve.",
-          [
-            { text: "Fechar" }
-          ]
-        );
-        // Limpa os campos após o envio (opcional)
-        setNome('');
-        setEmail('');
-        setMensagem('');
-      }
-    };
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [mensagem, setMensagem] = useState('');
 
+  // Estados para os checkboxes
+  const [checklist, setChecklist] = useState({
+    gratidao: false,
+    autocrítica: false,
+    pensamentosNegativos: false,
+    rotinasSaudaveis: false,
+    meditacao: false,
+    atencaoCorpo: false,
+    fontesEstresse: false,
+    pausas: false,
+    respiracao: false,
+  });
+
+  const handleEnviar = () => {
+    if (nome.trim() === '' || email.trim() === '' || mensagem.trim() === '') {
+      Alert.alert(
+        "Atenção",
+        "Por favor, preencha todos os campos antes de enviar.",
+        [{ text: "OK" }]
+      );
+    } else {
+      Alert.alert(
+        "✅ Mensagem Enviada!",
+        "Sua mensagem foi enviada com sucesso!\n\nEntraremos em contato em breve.",
+        [{ text: "Fechar" }]
+      );
+      setNome('');
+      setEmail('');
+      setMensagem('');
+    }
+  };
+
+  // Função para alternar o estado de um checkbox
+  const toggleCheckbox = (key) => {
+    setChecklist({ ...checklist, [key]: !checklist[key] });
+  };
+
+  useEffect(() => {
+    const todosMarcados = Object.values(checklist).every(item => item === true);
+    if (todosMarcados) {
+      Alert.alert(
+        "🎉 Parabéns!",
+        "Você completou todas as tarefas do Check List Diário!\n\nContinue assim para manter seu bem-estar!",
+        [{ text: "OK" }]
+      );
+    }
+  }, [checklist]);
 
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Dicas para seu bem-estar</Text>
       <Text style={styles.subtitle}>Siga nossas dicas e complete seu Check List <Text style={styles.subtitleBold}>Diário!</Text></Text>
       
-      
       <View style={styles.bloco}>
-      <View style={styles.imageContainer}>
-        <Image
-          style={styles.owlImage}
-          source={require('../../assets/coruja1.jpg')}
-          resizeMode="contain"
-        />
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.owlImage}
+            source={require('../../assets/coruja1.jpg')}
+            resizeMode="contain"
+          />
+        </View>
+        
+        {/* Seção 1 - Pensamento Positivo */}
+        <Text style={styles.sectionTitle}>Pensamento Positivo e Gratidão</Text>
+        
+        <View style={styles.checklistItem}>
+          <TouchableOpacity onPress={() => toggleCheckbox('gratidao')}>
+            <Ionicons 
+              name={checklist.gratidao ? "checkbox" : "checkbox-outline"} 
+              size={24} 
+              color={checklist.gratidao ? "#659696" : "#333"} 
+            />
+          </TouchableOpacity>
+          <Text style={styles.checklistText}>
+            <Text style={styles.boldText}>Pratique gratidão diária:</Text> Liste 3 coisas pelas quais você é grato todos os dias.
+          </Text>
+        </View>
+        
+        <View style={styles.checklistItem}>
+          <TouchableOpacity onPress={() => toggleCheckbox('autocrítica')}>
+            <Ionicons 
+              name={checklist.autocrítica ? "checkbox" : "checkbox-outline"} 
+              size={24} 
+              color={checklist.autocrítica ? "#659696" : "#333"} 
+            />
+          </TouchableOpacity>
+          <Text style={styles.checklistText}>
+            <Text style={styles.boldText}>Evite o autocrítico excessivo:</Text> Seja gentil com você mesmo.
+          </Text>
+        </View>
+        
+        <View style={styles.checklistItem}>
+          <TouchableOpacity onPress={() => toggleCheckbox('pensamentosNegativos')}>
+            <Ionicons 
+              name={checklist.pensamentosNegativos ? "checkbox" : "checkbox-outline"} 
+              size={24} 
+              color={checklist.pensamentosNegativos ? "#659696" : "#333"} 
+            />
+          </TouchableOpacity>
+          <Text style={styles.checklistText}>
+            <Text style={styles.boldText}>Desafie pensamentos negativos:</Text> Substitua por algo positivo.
+          </Text>
+        </View>
       </View>
       
-      {/* Seção 1 - Pensamento Positivo */}
-      <Text style={styles.sectionTitle}>Pensamento Positivo e Gratidão</Text>
-      
-      <View style={styles.checklistItem}>
-        <Ionicons name="checkmark-outline" size={24} />
-        <Text style={styles.checklistText}>
-          <Text style={styles.boldText}>Pratique gratidão diária:</Text> Liste 3 coisas pelas quais você é grato todos os dias.
-        </Text>
-      </View>
-      
-      <View style={styles.checklistItem}>
-        <Ionicons name="checkmark-outline" size={24} />
-        <Text style={styles.checklistText}>
-          <Text style={styles.boldText}>Evite o autocrítico excessivo:</Text> Seja gentil com você mesmo. Aprenda a aceitar seus erros e fracassos.
-        </Text>
-      </View>
-      
-      <View style={styles.checklistItem}>
-        <Ionicons name="checkmark-outline" size={24} />
-        <Text style={styles.checklistText}>
-          <Text style={styles.boldText}>Desafie pensamentos negativos:</Text> ao perceber um pensamento negativo, tente substituir por algo mais positivo.
-        </Text>
-      </View>
-      </View>
-      
-      {/* Divisor entre seções */}
       <View style={styles.divider} />
-
-      
-
-    <View style={styles.bloco}>
-      <View style={[styles.imageContainer, styles.secondImageContainer]}>
-        <Image
-          style={styles.owlImage}
-          source={require('../../assets/coruja2.jpg')}
-          resizeMode="contain"
-        />
-      </View>
-
-      {/* Seção 2 - Autocuidado */}
-      <Text style={styles.sectionTitle}>Autocuidado e Equilíbrio Pessoal</Text>
-      
-      <View style={styles.checklistItem}>
-        <Ionicons name="checkmark" size={24} />
-        <Text style={styles.checklistText}>
-          <Text style={styles.boldText}>Estabeleça rotinas saudáveis:</Text> Crie horários regulares para dormir, comer e trabalhar.
-        </Text>
-      </View>
-      
-      <View style={styles.checklistItem}>
-        <Ionicons name="checkmark" size={24} />
-        <Text style={styles.checklistText}>
-          <Text style={styles.boldText}>Pratique a meditação ou mindfulness:</Text> Dedique alguns minutos por dia para estar presente no momento e respirar profundamente.
-        </Text>
-      </View>
-      
-      <View style={styles.checklistItem}>
-        <Ionicons name="checkmark" size={24} />
-        <Text style={styles.checklistText}>
-          <Text style={styles.boldText}>Atenção ao corpo:</Text> Pratique atividades físicas regularmente, mesmo que simples caminhadas.
-        </Text>
-      </View>
-      </View>
-
-      <View style={styles.divider} />
-
 
       <View style={styles.bloco}>
-      <View style={[styles.imageContainer, styles.secondImageContainer]}>
-        <Image
-          style={styles.owlImage}
-          source={require('../../assets/coruja3.jpg')}
-          resizeMode="contain"
-        />
-      </View>
+        <View style={[styles.imageContainer, styles.secondImageContainer]}>
+          <Image
+            style={styles.owlImage}
+            source={require('../../assets/coruja2.jpg')}
+            resizeMode="contain"
+          />
+        </View>
 
-      {/* Seção 3 - Estresse */}
-      <Text style={styles.sectionTitle}>Gestão do Estresse</Text>
-      
-      <View style={styles.checklistItem}>
-        <Ionicons name="checkmark" size={24} />
-        <Text style={styles.checklistText}>
-          <Text style={styles.boldText}>Identifique fontes de estresse:</Text> Reconheça o que causa ansiedade e estresse em sua vida.
-        </Text>
-      </View>
-      
-      <View style={styles.checklistItem}>
-        <Ionicons name="checkmark" size={24} />
-        <Text style={styles.checklistText}>
-          <Text style={styles.boldText}>Faça pausas:</Text> Se você está sobrecarregado, pare por alguns minutos para relaxar e reconectar.
-        </Text>
-      </View>
-      
-      <View style={styles.checklistItem}>
-        <Ionicons name="checkmark" size={24} />
-        <Text style={styles.checklistText}>
-          <Text style={styles.boldText}>Pratique respiração profunda:</Text> Pratique técnicas simples, como respiração abdominal, para reduzir o estresse.
-        </Text>
-      </View>
+        {/* Seção 2 - Autocuidado */}
+        <Text style={styles.sectionTitle}>Autocuidado e Equilíbrio Pessoal</Text>
+        
+        <View style={styles.checklistItem}>
+          <TouchableOpacity onPress={() => toggleCheckbox('rotinasSaudaveis')}>
+            <Ionicons 
+              name={checklist.rotinasSaudaveis ? "checkbox" : "checkbox-outline"} 
+              size={24} 
+              color={checklist.rotinasSaudaveis ? "#659696" : "#333"} 
+            />
+          </TouchableOpacity>
+          <Text style={styles.checklistText}>
+            <Text style={styles.boldText}>Estabeleça rotinas saudáveis:</Text> Horários para dormir, comer e trabalhar.
+          </Text>
+        </View>
+        
+        <View style={styles.checklistItem}>
+          <TouchableOpacity onPress={() => toggleCheckbox('meditacao')}>
+            <Ionicons 
+              name={checklist.meditacao ? "checkbox" : "checkbox-outline"} 
+              size={24} 
+              color={checklist.meditacao ? "#659696" : "#333"} 
+            />
+          </TouchableOpacity>
+          <Text style={styles.checklistText}>
+            <Text style={styles.boldText}>Pratique meditação ou mindfulness:</Text> Respire profundamente.
+          </Text>
+        </View>
+        
+        <View style={styles.checklistItem}>
+          <TouchableOpacity onPress={() => toggleCheckbox('atencaoCorpo')}>
+            <Ionicons 
+              name={checklist.atencaoCorpo ? "checkbox" : "checkbox-outline"} 
+              size={24} 
+              color={checklist.atencaoCorpo ? "#659696" : "#333"} 
+            />
+          </TouchableOpacity>
+          <Text style={styles.checklistText}>
+            <Text style={styles.boldText}>Atenção ao corpo:</Text> Atividades físicas regularmente.
+          </Text>
+        </View>
       </View>
 
       <View style={styles.divider} />
 
-      <Text style={{textAlign:'center', fontSize:16}}>Não deixe de nos contactar em caso de qualquer dúvida!</Text>
+      <View style={styles.bloco}>
+        <View style={[styles.imageContainer, styles.secondImageContainer]}>
+          <Image
+            style={styles.owlImage}
+            source={require('../../assets/coruja3.jpg')}
+            resizeMode="contain"
+          />
+        </View>
+
+        {/* Seção 3 - Estresse */}
+        <Text style={styles.sectionTitle}>Gestão do Estresse</Text>
+        
+        <View style={styles.checklistItem}>
+          <TouchableOpacity onPress={() => toggleCheckbox('fontesEstresse')}>
+            <Ionicons 
+              name={checklist.fontesEstresse ? "checkbox" : "checkbox-outline"} 
+              size={24} 
+              color={checklist.fontesEstresse ? "#659696" : "#333"} 
+            />
+          </TouchableOpacity>
+          <Text style={styles.checklistText}>
+            <Text style={styles.boldText}>Identifique fontes de estresse:</Text> Reconheça o que causa ansiedade.
+          </Text>
+        </View>
+        
+        <View style={styles.checklistItem}>
+          <TouchableOpacity onPress={() => toggleCheckbox('pausas')}>
+            <Ionicons 
+              name={checklist.pausas ? "checkbox" : "checkbox-outline"} 
+              size={24} 
+              color={checklist.pausas ? "#659696" : "#333"} 
+            />
+          </TouchableOpacity>
+          <Text style={styles.checklistText}>
+            <Text style={styles.boldText}>Faça pausas:</Text> Pare para relaxar e reconectar.
+          </Text>
+        </View>
+        
+        <View style={styles.checklistItem}>
+          <TouchableOpacity onPress={() => toggleCheckbox('respiracao')}>
+            <Ionicons 
+              name={checklist.respiracao ? "checkbox" : "checkbox-outline"} 
+              size={24} 
+              color={checklist.respiracao ? "#659696" : "#333"} 
+            />
+          </TouchableOpacity>
+          <Text style={styles.checklistText}>
+            <Text style={styles.boldText}>Pratique respiração profunda:</Text> Reduza o estresse.
+          </Text>
+        </View>
+      </View>
 
       <View style={styles.divider} />
+      <Text style={{ textAlign: 'center', fontSize: 16 }}>Não deixe de nos contactar em caso de qualquer dúvida!</Text>
+      <View style={styles.divider} />
 
-      
+      {/* Formulário de contato (mantido igual) */}
       <TextInput
         style={styles.input}
         placeholder='Nome: '
@@ -184,12 +254,12 @@ export default function TelaDicas() {
         <Text style={styles.botaoTexto}>Enviar</Text>
       </TouchableOpacity>
 
-    <View style={styles.divider} />
-      
+      <View style={styles.divider} />
     </ScrollView>
   );
 }
 
+// Estilos (mantidos iguais)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -249,7 +319,6 @@ const styles = StyleSheet.create({
   },
   boldText: {
     fontWeight: 'bold',
-    
   },
   bloco: {
     borderWidth: 3,
