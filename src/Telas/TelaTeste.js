@@ -65,7 +65,7 @@ export default function TelaTeste(){
             <Text style={styles.titulo}>Teste Mindly</Text>
             <View style={styles.conteudContainer}>
                 <Text style={styles.textConteud}>O teste Mindly é baseado no modelo Big Five.</Text>
-                <Text style={styles.textConteud}>Caracterizamos sua personalidade de acordo com cinco traços: Extroversão, Amabilidade, Neuroticismo, Consciência e Abertura à Experiências. </Text>
+                <Text style={styles.textConteud}>Caracterizamos sua personalidade de acordo com cinco traços: <Text style={styles.textConteudBold}>Extroversão, Amabilidade, Neuroticismo, Consciência e Abertura à Experiências.</Text></Text>
             </View>
             <Text style={styles.textSection}>Responda as perguntas e obtenha seu resultado Mindly </Text>
 
@@ -90,7 +90,7 @@ export default function TelaTeste(){
                 <View style={styles.resultadoContainer}>
                     <Text style={styles.resultadoTitulo}>Perfil Mindly</Text>
                     {Object.entries(resultado)
-                    .sort((a, b) => b[1].pontuacao - a[1].pontuacao) // ordena do menor para o maior
+                    .sort((a, b) => b[1].pontuacao - a[1].pontuacao) 
                     .map(([personalidade, dados]) => (
                   <View key={personalidade} style={styles.resultadoItem}>
                           <Text style={styles.resultadoTexto}>
@@ -124,14 +124,14 @@ const styles = StyleSheet.create({
 
     conteudContainer:{
         width: 380,
-        height: 150,
+        height: 180,
         backgroundColor: '#FFF7F7',
         elevation: 8,
         borderRadius: 10,
         marginBottom: 50,
         display: 'flex',
         flexDirection: 'column',
-        gap: 10
+        gap: 15
     },
     textConteud:{
         width: '100%',
@@ -139,14 +139,15 @@ const styles = StyleSheet.create({
         textAlign: 'justify',
         paddingLeft: 10,
         paddingRight: 15,
-        fontSize: 16
+        fontSize: 17
     },
-    
+    textConteudBold:{
+      fontWeight: 'bold'
+    },
     textSection:{
       marginBottom: 50,
       fontSize: 18,
-      textAlign: 'center',
-      fontWeight: 'bold'
+      textAlign: 'center'
     },
     textQuestions:{
       marginBottom: 8,
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
       backgroundColor: "#f1f1f1",
       padding: 12,
       borderRadius: 8,
-      marginBottom: 16,
+      marginBottom: 20,
       elevation: 2,
       shadowColor: "#000",
       shadowOffset: { width: 0, height: 2 },
@@ -216,7 +217,8 @@ const styles = StyleSheet.create({
       fontWeight: "bold"
     },
     resultadoContainer: {
-      marginTop: 30
+      marginTop: 15,
+      marginBottom: 30
     },
     resultadoTitulo: {
       fontSize: 20,

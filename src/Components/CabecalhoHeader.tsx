@@ -16,20 +16,25 @@ export default function CabecalhoHeader({ navigation }) {
       <SafeAreaView style={styles.buttonsContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('TelaAnsiedade')}
+          onPress={() => navigation.navigate('TelaInicial')}
         >
-          <Text style={styles.buttonText}>Ansiedade</Text>
+          <Text style={styles.buttonText}>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}
           onPress={() => navigation.navigate('TelaChat')}>
           <Text style={styles.buttonText}>Chat</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity style={styles.button}
+          onPress={() => navigation.navigate('TelaDicas')}>
+          <Text style={styles.buttonText}>Dicas</Text>
+        </TouchableOpacity>
+
       </SafeAreaView>
 
       
 
-      {/* Logo */}
+      
       <View style={styles.logoContainer}>
         <Image style={styles.logoPlaceholder} source={require('../../assets/Logo.jpg')}/>
       </View>
@@ -50,10 +55,10 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: 'row',
-    gap: 20, // Espaço entre botões
+    gap: 12, 
     position: 'absolute',
-    left: '50%',
-    transform: [{ translateX: -50 }], // Centraliza horizontalmente
+    left: '35%',
+    transform: [{ translateX: -50 }], 
   },
   button: {
     paddingHorizontal: 5,
@@ -64,7 +69,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   logoContainer: {
-    marginLeft: 'auto', // Empurra para a direita
+    marginLeft: 'auto', 
   },
   logoPlaceholder: {
     width:100, 
