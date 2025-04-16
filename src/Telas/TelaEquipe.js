@@ -16,7 +16,7 @@ const equipe = [
     linkedin: 'https://www.linkedin.com/in/laura-amadeu-0995a22b6/',
   },
   {
-    nome: 'Raphael Kim',
+    nome: 'Raphael Lamaison Kim',
     rm: 'RM557914',
     imagem: require('../../assets/raphael.png'),
     github: 'https://github.com/RaphaelKim21',

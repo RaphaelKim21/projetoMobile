@@ -1,11 +1,73 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useRef, useState } from 'react';
+import {Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
 
 export default function TelaChat({ navigation }) {
+  const scrollViewRef = useRef(null);
+  const [mensagens, setMensagens] = useState([]);
+  const [novaMensagem, setNovaMensagem] = useState('');
+
+  const enviarMensagem = () => {
+    if (novaMensagem.trim() === '') return;
+
+    const horario = new Date().toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
+    const mensagemUsuario = (
+      <View
+        key={Date.now()}
+        style={[estilos.mensagemContainer, estilos.mensagemUsuario]}
+      >
+        <Image
+          style={estilos.avatarPlaceholder}
+          source={require('../../assets/cadastro 1.png')}
+        />
+        <View style={[estilos.balaoMensagem, estilos.balaoUsuario]}>
+          <Text style={estilos.nomeUsuario}>Você</Text>
+          <Text style={estilos.textoMensagem}>{novaMensagem}</Text>
+          <Text style={estilos.horaMensagem}>{horario}</Text>
+        </View>
+      </View>
+    );
+
+    setMensagens((prev) => [...prev, mensagemUsuario]);
+    setNovaMensagem('');
+
+    setTimeout(() => {
+      const resposta = (
+        <View
+          key={Date.now() + 1}
+          style={[estilos.mensagemContainer, estilos.mensagemPsicologo]}
+        >
+          <View style={estilos.avatarPlaceholder} />
+          <View style={[estilos.balaoMensagem, estilos.balaoPsicologo]}>
+            <Text style={[estilos.nomeUsuario, { color: 'white' }]}>Psicólogo</Text>
+            <Text style={[estilos.textoMensagem, { color: 'white' }]}>
+              Obrigado por se abrir conosco. Logo um psicólogo vai te responder.
+            </Text>
+            <Text style={[estilos.horaMensagem, { color: '#e0e0e0' }]}>
+              {new Date().toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+              })}
+            </Text>
+          </View>
+        </View>
+      );
+
+      setMensagens((prev) => [...prev, resposta]);
+      scrollViewRef.current?.scrollToEnd({ animated: true });
+    }, 1500); // resposta após 1.5 segundos
+
+    setTimeout(() => {
+      scrollViewRef.current?.scrollToEnd({ animated: true });
+    }, 100);
+  };
+
   return (
     <View style={estilos.container}>
-      {/* Cabeçalho */}
       <LinearGradient
         colors={['#659696', '#8fb3b3']}
         style={estilos.gradienteCabecalho}
@@ -13,11 +75,13 @@ export default function TelaChat({ navigation }) {
         <Text style={estilos.tituloChat}>Chat de Apoio Anônimo</Text>
       </LinearGradient>
 
-      {/* Área de Mensagens (Estática) */}
-      <ScrollView style={estilos.areaMensagens}>
-        {/* Mensagem do Usuário Anônimo 1 */}
+      <ScrollView style={estilos.areaMensagens} ref={scrollViewRef}>
+        {/* Mensagens fixas */}
         <View style={[estilos.mensagemContainer, estilos.mensagemUsuario]}>
-          <Image style={estilos.avatarPlaceholder} source={require('../../assets/cadastro 1.png')} />
+          <Image
+            style={estilos.avatarPlaceholder}
+            source={require('../../assets/cadastro 1.png')}
+          />
           <View style={[estilos.balaoMensagem, estilos.balaoUsuario]}>
             <Text style={estilos.nomeUsuario}>Anônimo</Text>
             <Text style={estilos.textoMensagem}>
@@ -27,7 +91,6 @@ export default function TelaChat({ navigation }) {
           </View>
         </View>
 
-        {/* Resposta do Psicólogo 1 */}
         <View style={[estilos.mensagemContainer, estilos.mensagemPsicologo]}>
           <View style={estilos.avatarPlaceholder} />
           <View style={[estilos.balaoMensagem, estilos.balaoPsicologo]}>
@@ -39,9 +102,11 @@ export default function TelaChat({ navigation }) {
           </View>
         </View>
 
-        {/* Mensagem do Usuário Anônimo 2 */}
         <View style={[estilos.mensagemContainer, estilos.mensagemUsuario]}>
-          <Image style={estilos.avatarPlaceholder} source={require('../../assets/cadastro 1.png')} />
+          <Image
+            style={estilos.avatarPlaceholder}
+            source={require('../../assets/cadastro 1.png')}
+          />
           <View style={[estilos.balaoMensagem, estilos.balaoUsuario]}>
             <Text style={estilos.nomeUsuario}>Anônimo</Text>
             <Text style={estilos.textoMensagem}>
@@ -51,7 +116,6 @@ export default function TelaChat({ navigation }) {
           </View>
         </View>
 
-        {/* Resposta do Psicólogo 2 */}
         <View style={[estilos.mensagemContainer, estilos.mensagemPsicologo]}>
           <View style={estilos.avatarPlaceholder} />
           <View style={[estilos.balaoMensagem, estilos.balaoPsicologo]}>
@@ -62,24 +126,30 @@ export default function TelaChat({ navigation }) {
             <Text style={[estilos.horaMensagem, { color: '#e0e0e0' }]}>11:10</Text>
           </View>
         </View>
+
+        {/* Mensagens dinâmicas */}
+        {mensagens.map((m) => m)}
       </ScrollView>
 
-
-
+      {/* Footer de envio */}
       <View style={estilos.footer}>
         <TextInput
           style={estilos.inputMensagem}
           placeholder="Digite sua mensagem..."
           placeholderTextColor="#999"
+          value={novaMensagem}
+          onChangeText={setNovaMensagem}
         />
-        <TouchableOpacity style={estilos.botaoEnviar}>
+        <TouchableOpacity style={estilos.botaoEnviar} onPress={enviarMensagem}>
           <Text style={estilos.textoBotao}>Enviar</Text>
         </TouchableOpacity>
       </View>
     </View>
-
   );
 }
+
+// estilos (sem alterações)
+
 
 const estilos = StyleSheet.create({
   container: {
@@ -153,29 +223,6 @@ const estilos = StyleSheet.create({
     marginTop: 5,
     alignSelf: 'flex-end',
   },
-  areaInputPlaceholder: {
-    flexDirection: 'row',
-    padding: 10,
-    backgroundColor: 'white',
-    borderTopWidth: 1,
-    borderTopColor: '#eee',
-    alignItems: 'center',
-  },
-  inputPlaceholder: {
-    flex: 1,
-    height: 40,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#ddd',
-  },
-  botaoPlaceholder: {
-    width: 70,
-    height: 40,
-    backgroundColor: '#659696',
-    borderRadius: 20,
-    marginLeft: 10,
-  },
   footer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -206,5 +253,4 @@ const estilos = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
-
 });
