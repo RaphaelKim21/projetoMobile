@@ -3,9 +3,7 @@ import { View, Text, StyleSheet, Image, ScrollView, TextInput, TouchableOpacity,
 import { Ionicons } from '@expo/vector-icons';
 
 export default function TelaDicas() {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [mensagem, setMensagem] = useState('');
+  
 
   // Estados para os checkboxes
   const [checklist, setChecklist] = useState({
@@ -20,24 +18,6 @@ export default function TelaDicas() {
     respiracao: false,
   });
 
-  const handleEnviar = () => {
-    if (nome.trim() === '' || email.trim() === '' || mensagem.trim() === '') {
-      Alert.alert(
-        "Atenção",
-        "Por favor, preencha todos os campos antes de enviar.",
-        [{ text: "OK" }]
-      );
-    } else {
-      Alert.alert(
-        "✅ Mensagem Enviada!",
-        "Sua mensagem foi enviada com sucesso!\n\nEntraremos em contato em breve.",
-        [{ text: "Fechar" }]
-      );
-      setNome('');
-      setEmail('');
-      setMensagem('');
-    }
-  };
 
   // Função para alternar o estado de um checkbox
   const toggleCheckbox = (key) => {
@@ -224,36 +204,8 @@ export default function TelaDicas() {
       <Text style={{ textAlign: 'center', fontSize: 16 }}>Não deixe de nos contactar em caso de qualquer dúvida!</Text>
       <View style={styles.divider} />
 
-      {/* Formulário de contato (mantido igual) */}
-      <TextInput
-        style={styles.input}
-        placeholder='Nome: '
-        autoCapitalize='words'
-        value={nome}
-        onChangeText={setNome}
-      />
-      
-      <TextInput
-        style={styles.input}
-        placeholder='Email: '
-        keyboardType='email-address'
-        maxLength={25}
-        value={email}
-        onChangeText={setEmail}
-      />
 
-      <TextInput
-        style={styles.input2}
-        placeholder='Mensagem: '
-        autoCapitalize='words'
-        value={mensagem}
-        onChangeText={setMensagem}
-      />
       
-      <TouchableOpacity style={styles.botao} onPress={handleEnviar}>
-        <Text style={styles.botaoTexto}>Enviar</Text>
-      </TouchableOpacity>
-
       <View style={styles.divider} />
     </ScrollView>
   );
@@ -330,61 +282,5 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 8,
     backgroundColor: '#F8F2F2'
-  },
-  input: {
-    backgroundColor: '#B2CBCB',
-    width: 300,
-    borderRadius: 15, 
-    padding: 15, 
-    borderWidth: 3, 
-    borderColor: '#B2CBCB',
-    fontSize: 18,
-    marginBottom: 20,
-    alignSelf: 'center',
-    shadowColor: 'black',
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.50,
-    shadowRadius: 8,
-    elevation: 8
-  },
-  input2: {
-    backgroundColor: '#B2CBCB',
-    width: 300,
-    height: 110,
-    borderRadius: 15,
-    padding: 15, 
-    borderWidth: 3, 
-    borderColor: '#B2CBCB',
-    fontSize: 18,
-    marginBottom: 20,
-    alignSelf: 'center',
-    shadowColor: 'black',
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.50,
-    shadowRadius: 8,
-    elevation: 8,
-    textAlignVertical: 'top', 
-    alignItems: 'flex-start'
-  },
-  botao: {
-    backgroundColor: '#B2CBCB',
-    width: 130,
-    height: 40,
-    borderRadius: 15,
-    padding: 7,
-    borderWidth: 3,
-    borderColor: '#B2CBCB',
-    marginBottom: 20,
-    alignSelf: 'center',
-    shadowColor: 'black',
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.50,
-    shadowRadius: 8,
-    elevation: 8,
-    justifyContent:'center'
-  },
-  botaoTexto: {
-    fontSize: 16,
-    textAlign: 'center'
   }
 });
