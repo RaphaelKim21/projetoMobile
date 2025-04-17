@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View, Image,} from 'react-native';
 
 export default function TelaInicial({ navigation }) {
   return (
@@ -8,11 +8,12 @@ export default function TelaInicial({ navigation }) {
       <LinearGradient
         colors={['#659696', '#8fb3b3']}
         style={estilos.gradienteCabecalho}
+      />
+
+      <ScrollView
+        contentContainerStyle={estilos.conteudo}
+        showsVerticalScrollIndicator={false}
       >
-
-      </LinearGradient>
-
-      <View style={estilos.conteudo}>
         <Text style={estilos.tituloPrincipal}>Central de Ajuda Psicológica</Text>
 
         <View style={estilos.cartao}>
@@ -40,7 +41,37 @@ export default function TelaInicial({ navigation }) {
         >
           <Text style={estilos.textoBotaoPrincipal}>Agendar Consulta</Text>
         </TouchableOpacity>
-      </View>
+
+        <View style={{ height: 60 }} />
+
+        <Text style={estilos.tituloSecundario}>
+          O <Text style={estilos.destaque}>Mindly sempre está</Text> com{' '}
+          <Text style={estilos.negrito}>você!</Text>
+        </Text>
+
+        <View style={estilos.listaServicos}>
+          <Text style={estilos.itemServico}>✔ Dicas para manter equilíbrio emocional</Text>
+          <Text style={estilos.itemServico}>✔ Técnicas de relaxamento e respiração</Text>
+          <Text style={estilos.itemServico}>✔ Conversa online com especialistas</Text>
+          <Text style={estilos.itemServico}>✔ Sistema de avaliação psicológica</Text>
+        </View>
+
+        <View style={{ alignItems: 'center', marginTop: 20 }}>
+          <Image
+            source={require('../../assets/apoio.png')}
+            style={estilos.imagemApoio}
+          />
+        </View>
+
+        <View style={{ height: 100 }} />
+
+        <Text style={estilos.fraseFinal}>Aproveite os serviços Mindly!</Text>
+
+        <Image
+          source={require('../../assets/logoazul.png')}
+          style={estilos.iconeFinal}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -54,8 +85,8 @@ const estilos = StyleSheet.create({
     width: '100%',
   },
   conteudo: {
-    flex: 1,
     padding: 20,
+    paddingBottom: 40,
     backgroundColor: 'white',
   },
   tituloPrincipal: {
@@ -109,10 +140,51 @@ const estilos = StyleSheet.create({
     borderRadius: 50,
     alignItems: 'center',
     marginTop: 20,
+    marginBottom: 10,
   },
   textoBotaoPrincipal: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 18,
+  },
+  tituloSecundario: {
+    fontSize: 18,
+    textAlign: 'center',
+    marginBottom: 25,
+    color: '#333',
+  },
+  destaque: {
+    color: '#659696',
+    fontWeight: 'bold',
+  },
+  negrito: {
+    fontWeight: 'bold',
+  },
+  listaServicos: {
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    alignItems: 'center',
+  },
+  itemServico: {
+    fontSize: 14,
+    color: '#333',
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  imagemApoio: {
+    width: 270,
+    height: 170,
+    borderRadius: 6,
+  },
+  fraseFinal: {
+    textAlign: 'center',
+    fontSize: 16,
+    marginBottom: 16,
+    color: '#333',
+  },
+  iconeFinal: {
+    width: 45,
+    height: 40,
+    alignSelf: 'center',
   },
 });
