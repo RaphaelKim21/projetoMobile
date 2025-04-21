@@ -59,7 +59,7 @@ export default function TelaChat({ navigation }) {
 
       setMensagens((prev) => [...prev, resposta]);
       scrollViewRef.current?.scrollToEnd({ animated: true });
-    }, 1500); // resposta após 1.5 segundos
+    }, 1500); 
 
     setTimeout(() => {
       scrollViewRef.current?.scrollToEnd({ animated: true });
@@ -76,7 +76,7 @@ export default function TelaChat({ navigation }) {
       </LinearGradient>
 
       <ScrollView style={estilos.areaMensagens} ref={scrollViewRef}>
-        {/* Mensagens fixas */}
+
         <View style={[estilos.mensagemContainer, estilos.mensagemUsuario]}>
           <Image
             style={estilos.avatarPlaceholder}
@@ -131,7 +131,7 @@ export default function TelaChat({ navigation }) {
         {mensagens.map((m) => m)}
       </ScrollView>
 
-      {/* Footer de envio */}
+
       <View style={estilos.footer}>
         <TextInput
           style={estilos.inputMensagem}
@@ -148,7 +148,7 @@ export default function TelaChat({ navigation }) {
   );
 }
 
-// estilos (sem alterações)
+
 
 
 const estilos = StyleSheet.create({

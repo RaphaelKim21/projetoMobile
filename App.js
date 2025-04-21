@@ -94,15 +94,7 @@ function CustomDrawerContent(props) {
 
       <View style={styles.divider} />
 
-      <DrawerItem
-        label="Configurações"
-        icon={({ color }) => (
-          <Ionicons name="settings" size={24} color={color} style={{ marginRight: 10 }} />
-        )}
-        onPress={() => console.log("Configurações")}
-        labelStyle={styles.drawerLabel}
-        style={styles.drawerItem}
-      />
+      
     </DrawerContentScrollView>
   );
 }
