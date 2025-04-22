@@ -201,8 +201,7 @@ export default function TelaDicas() {
       </View>
 
       <View style={styles.divider} />
-      <Text style={{ textAlign: 'center', fontSize: 16 }}>Não deixe de nos contactar em caso de qualquer dúvida!</Text>
-      <View style={styles.divider} />
+      
 
 
       

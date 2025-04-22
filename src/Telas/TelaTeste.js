@@ -10,11 +10,11 @@ const perguntas =[
   { id: 2, texto: "Tenho interesse por arte, música ou literatura.", categoria: "abertura" },
   { id: 3, texto: "Eu sempre cumpro prazos e obrigações.", categoria: "consciencia" },
   { id: 4, texto: "Gosto de manter tudo organizado e planejar com antecedência.", categoria: "consciencia" },
-  { id: 5, texto: "Me sinto energizada ao estar com outras pessoas.", categoria: "extroversao" },
+  { id: 5, texto: "Me sinto energizado(a) ao estar com outras pessoas.", categoria: "extroversao" },
   { id: 6, texto: "Sou falante e gosto de ser o centro das atenções.", categoria: "extroversao" },
   { id: 7, texto: "Me preocupo com o bem-estar das pessoas ao meu redor.", categoria: "amabilidade" },
   { id: 8, texto: "Tento evitar conflitos e ser gentil com os outros.", categoria: "amabilidade" },
-  { id: 9, texto: "Fico estressada ou ansiosa com facilidade.", categoria: "neuroticismo" },
+  { id: 9, texto: "Fico estressado (a) ou ansioso (a) com facilidade.", categoria: "neuroticismo" },
   { id: 10, texto: "Tenho variações de humor frequentes.", categoria: "neuroticismo" }
 ];
 
