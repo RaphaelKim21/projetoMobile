@@ -48,6 +48,50 @@ Promover o acesso facilitado a serviços psicológicos e informações de qualid
 
 ---
 
+## 🚀 Como executar o projeto
+
+### 📱 Aplicativo Mobile (React Native)
+
+1. **Clone o repositório do aplicativo:**
+
+```bash
+git clone https://github.com/RaphaelKim21/projetoMobile.git
+cd projetoMobile
+```
+
+2. **Instale as dependências**
+
+```bash
+npm install
+```
+
+3.**Execute o app** (se estiver usando Expo)
+
+```bash
+npx expo start
+```
+
+### 🌐 API Backend (Python + Flask)
+
+1. **Clone o repositório da API:**
+
+```bash
+git clone https://github.com/Gabriela-Reiss/API-Big-Five.git
+cd API-Big-Five
+```
+
+2. **Instale as dependências**
+
+```bash
+pip install Flask flask-cors
+```
+
+3. **Execute a API**
+
+```bash
+python api.py
+```
+
 
 ## 📫 Contato
 
