@@ -37,24 +37,20 @@ export default function TelaChat({ navigation }) {
 
     setTimeout(() => {
       const resposta = (
-        <View
-          key={Date.now() + 1}
-          style={[estilos.mensagemContainer, estilos.mensagemPsicologo]}
-        >
-          <View style={estilos.avatarPlaceholder} />
+        <View style={[estilos.mensagemContainer, estilos.mensagemPsicologo]}>
+          <Image
+            style={estilos.avatarPlaceholder}
+            source={require('../../assets/logoazul.png')}
+          />
           <View style={[estilos.balaoMensagem, estilos.balaoPsicologo]}>
-            <Text style={[estilos.nomeUsuario, { color: 'white' }]}>Psicólogo</Text>
-            <Text style={[estilos.textoMensagem, { color: 'white' }]}>
-              Obrigado por se abrir conosco. Logo um psicólogo vai te responder.
-            </Text>
-            <Text style={[estilos.horaMensagem, { color: '#e0e0e0' }]}>
-              {new Date().toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit',
-              })}
-            </Text>
+          <Text style={[estilos.nomeUsuario, { color: 'white' }]}>Psicólogo</Text>
+          <Text style={[estilos.textoMensagem, { color: 'white' }]}>
+            É comum nos sentirmos assim. Podemos trabalhar juntos para entender melhor esses sentimentos.
+          </Text>
+          <Text style={[estilos.horaMensagem, { color: '#e0e0e0' }]}>10:35</Text>
           </View>
         </View>
+
       );
 
       setMensagens((prev) => [...prev, resposta]);
@@ -92,7 +88,11 @@ export default function TelaChat({ navigation }) {
         </View>
 
         <View style={[estilos.mensagemContainer, estilos.mensagemPsicologo]}>
-          <View style={estilos.avatarPlaceholder} />
+        <Image
+            style={estilos.avatarPlaceholder} 
+            source={require('../../assets/logoazul.png')}
+        />
+
           <View style={[estilos.balaoMensagem, estilos.balaoPsicologo]}>
             <Text style={[estilos.nomeUsuario, { color: 'white' }]}>Psicólogo</Text>
             <Text style={[estilos.textoMensagem, { color: 'white' }]}>
@@ -117,7 +117,10 @@ export default function TelaChat({ navigation }) {
         </View>
 
         <View style={[estilos.mensagemContainer, estilos.mensagemPsicologo]}>
-          <View style={estilos.avatarPlaceholder} />
+        <Image
+            style={estilos.avatarPlaceholder}
+            source={require('../../assets/logoazul.png')}
+        />
           <View style={[estilos.balaoMensagem, estilos.balaoPsicologo]}>
             <Text style={[estilos.nomeUsuario, { color: 'white' }]}>Psicólogo</Text>
             <Text style={[estilos.textoMensagem, { color: 'white' }]}>
@@ -174,17 +177,18 @@ const estilos = StyleSheet.create({
   mensagemContainer: {
     flexDirection: 'row',
     marginBottom: 15,
-    alignItems: 'flex-start',
+    alignItems: 'flex-start', 
   },
+  
   mensagemUsuario: {
     justifyContent: 'flex-start',
   },
   mensagemPsicologo: {
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end'
   },
   avatarPlaceholder: {
-    width: 40,
-    height: 40,
+    width: 38,
+    height: 38,
     borderRadius: 20,
     backgroundColor: '#e0e0e0',
     marginRight: 10,
@@ -192,6 +196,7 @@ const estilos = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
   },
+  
   balaoMensagem: {
     maxWidth: '75%',
     padding: 12,
