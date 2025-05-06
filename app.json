@@ -4,11 +4,11 @@
     "slug": "Projeto",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logoazulCopia.jpg",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/logoazulCopia.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,13 +19,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.raphaelkim.Projeto"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5ed55342-a407-4e23-9253-83319ac3f651"
+      }
+    }
   }
 }
