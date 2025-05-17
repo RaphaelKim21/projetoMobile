@@ -4,11 +4,11 @@
     "slug": "Projeto",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logoazulCopia.jpg",
+    "icon": "./assets/logoazul.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/logoazulCopia.jpg",
+      "image": "./assets/logoazul.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -20,6 +20,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "edgeToEdgeEnabled": true,
       "package": "com.raphaelkim.Projeto"
     },
     "web": {
